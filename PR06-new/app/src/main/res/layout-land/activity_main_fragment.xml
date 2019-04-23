@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-        <!-- TODO: Create layout for RecyclerView Item (in another file) -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lstStudents"
             android:layout_width="0dp"

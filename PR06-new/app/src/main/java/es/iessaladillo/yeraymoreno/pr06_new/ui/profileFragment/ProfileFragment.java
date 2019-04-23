@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import es.iessaladillo.yeraymoreno.pr06_new.R;
-import es.iessaladillo.yeraymoreno.pr06_new.databinding.ActivityStudentBinding;
+import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentStudentBinding;
 import es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment.MainViewModel;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.KeyboardUtils;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.TextChangedListener;
@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment {
 
     public ProfileViewModel studentViewModel;
     public MainViewModel mainViewModel;
-    private ActivityStudentBinding studentBinding;
+    private FragmentStudentBinding studentBinding;
 
     private NavController navController;
 
@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_student, container, false);
+        return inflater.inflate(R.layout.fragment_student, container, false);
     }
 
     @Override
@@ -53,9 +53,8 @@ public class ProfileFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
         studentViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-        studentBinding = DataBindingUtil.setContentView(Objects.requireNonNull(this.getActivity()),R.layout.activity_student);
+        studentBinding = DataBindingUtil.setContentView(Objects.requireNonNull(this.getActivity()),R.layout.fragment_student);
         mainViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getParentFragment())).get(MainViewModel.class);
-        studentViewModel.setStudent(getArguments().getParcelable("student"));
         //Sets the image and form with data from viewmodel.
         setupViews();
         //Sets the click listeners.
@@ -90,19 +89,19 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    //Sets the avatar with a click listener sending it to AvatarFragment.
+    //Sets the avatar with a click listener to start AvatarFragment.
     private void avatarListeners() {
-        studentBinding.layoutAvatar.imgAvatar.setOnClickListener(this::changeAvatar);
-        studentBinding.layoutAvatar.lblAvatar.setOnClickListener(this::changeAvatar);
+        studentBinding.layoutAvatar.imgAvatar.setOnClickListener(v -> changeAvatar());
+        studentBinding.layoutAvatar.lblAvatar.setOnClickListener(v -> changeAvatar());
     }
 
     //TODO llamar fragmento avatar.
-    //creates bundle and sends to avatarFragment
-    private void changeAvatar(View v) {
+    //starts avatarFragment.
+    private void changeAvatar() {
 
     }
 
-    //Sets click listheners for icons to send an intent.
+    //Sets click listheners for icons to send intent.
     private void iconListeners() {
 
         //EMAIL
@@ -218,11 +217,16 @@ public class ProfileFragment extends Fragment {
             Snackbar.make(studentBinding.layoutForm.txtWeb, getString(R.string.main_saved_succesfully), Snackbar.LENGTH_SHORT).show();
             //Sends the student to the database.
             sendStudentToDataBase();
+            close();
         } else {
             showErrors();
             Snackbar.make(studentBinding.layoutForm.txtWeb, getString(R.string.main_error_saving), Snackbar.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void close() {
+        this.navController.navigateUp();
     }
 
     //Sends the student to database.

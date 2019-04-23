@@ -26,7 +26,7 @@
         android:id="@+id/profileFragment"
         android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.profileFragment.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/activity_student">
+        tools:layout="@layout/fragment_student">
         <action
             android:id="@+id/action_profileFragment_to_avatarFragment"
             app:destination="@id/avatarFragment" />
