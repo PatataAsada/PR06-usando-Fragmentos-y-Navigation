@@ -13,15 +13,16 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 
-
 public class MainFragmentAdapter extends ListAdapter<Student, MainFragmentAdapter.ViewHolder> {
-    private final OnStudentClickListener onStudentClickListener;
+    private final OnEditStudentClickListener onEditStudentClickListener;
+    private final OnDeleteStudentClickListener onDeleteStudentClickListener;
 
-    public MainFragmentAdapter(OnStudentClickListener onStudentClickListener) {
-        super(new DiffUtil.ItemCallback<Student>(){
+    public MainFragmentAdapter(OnEditStudentClickListener onEditStudentClickListener, OnDeleteStudentClickListener onDeleteStudentClickListener) {
+        super(new DiffUtil.ItemCallback<Student>() {
             @Override
             public boolean areItemsTheSame(@NonNull Student oldItem, @NonNull Student newItem) {
                 return oldItem.getId() == newItem.getId();
@@ -37,18 +38,19 @@ public class MainFragmentAdapter extends ListAdapter<Student, MainFragmentAdapte
                         TextUtils.equals(oldItem.getWeb(), newItem.getWeb());
             }
         });
-        this.onStudentClickListener = onStudentClickListener;
+        this.onEditStudentClickListener = onEditStudentClickListener;
+        this.onDeleteStudentClickListener = onDeleteStudentClickListener;
     }
 
     @NonNull
     @Override
-    public MainFragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MainFragmentAdapter.ViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_main_item, parent, false), onStudentClickListener);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.activity_main_item, parent, false), onEditStudentClickListener, onDeleteStudentClickListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainFragmentAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(getItem(position));
     }
 
@@ -72,7 +74,7 @@ public class MainFragmentAdapter extends ListAdapter<Student, MainFragmentAdapte
         private final Button btnEdit;
         private final Button btnDelete;
 
-        public ViewHolder(View itemView, final OnStudentClickListener onStudentClickListener) {
+        public ViewHolder(View itemView, final OnEditStudentClickListener onEditStudentClickListener, final OnDeleteStudentClickListener onDeleteStudentClickListener) {
             super(itemView);
             imgAvatar = ViewCompat.requireViewById(itemView, R.id.imgAvatar);
             lblName = ViewCompat.requireViewById(itemView, R.id.lblName);
@@ -80,8 +82,8 @@ public class MainFragmentAdapter extends ListAdapter<Student, MainFragmentAdapte
             lblEmail = ViewCompat.requireViewById(itemView, R.id.lblEmail);
             btnDelete = ViewCompat.requireViewById(itemView, R.id.btnDelete);
             btnEdit = ViewCompat.requireViewById(itemView, R.id.btnEdit);
-            btnEdit.setOnClickListener(v -> onStudentClickListener.OnEditClickListener(getAdapterPosition()));
-            btnDelete.setOnClickListener(v -> onStudentClickListener.OnDeleteClickListener(getAdapterPosition()));
+            btnEdit.setOnClickListener(v -> onEditStudentClickListener.onItemClick(getAdapterPosition()));
+            btnDelete.setOnClickListener(v -> onDeleteStudentClickListener.onItemClick(getAdapterPosition()));
         }
 
         public void bind(Student student) {
@@ -91,4 +93,5 @@ public class MainFragmentAdapter extends ListAdapter<Student, MainFragmentAdapte
             lblPhonenumber.setText(String.valueOf(student.getPhonenumber()));
         }
     }
+
 }

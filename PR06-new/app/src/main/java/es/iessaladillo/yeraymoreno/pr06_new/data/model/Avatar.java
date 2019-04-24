@@ -50,12 +50,17 @@ public class Avatar implements Parcelable {
     public int getImageResId() {
         return imageResId;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
     public long getId() {
         return id;
+    }
+
+    public boolean equals(Avatar avatar) {
+        return this.id == avatar.id && this.imageResId == avatar.imageResId && this.name.equals(avatar.name);
     }
 }
 

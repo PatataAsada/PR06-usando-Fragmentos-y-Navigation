@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Objects;
+
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentStudentBinding;
 import es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment.MainViewModel;
@@ -45,15 +45,16 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_student, container, false);
+        studentBinding = FragmentStudentBinding.inflate(inflater,container,false);
+        return studentBinding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //Sets navcontroller, gets viewmodel for current student(if edit was clicked).
         navController = NavHostFragment.findNavController(this);
         studentViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-        studentBinding = DataBindingUtil.setContentView(Objects.requireNonNull(this.getActivity()),R.layout.fragment_student);
         mainViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getParentFragment())).get(MainViewModel.class);
         //Sets the image and form with data from viewmodel.
         setupViews();
@@ -232,9 +233,9 @@ public class ProfileFragment extends Fragment {
     //Sends the student to database.
     private void sendStudentToDataBase() {
         setStudent();
-        if(studentViewModel.isEdit){
+        if (studentViewModel.isEdit) {
             mainViewModel.editStudent(studentViewModel.getOldStudent(), studentViewModel.getStudent());
-        }else {
+        } else {
             mainViewModel.addStudent(studentViewModel.getStudent());
         }
     }
