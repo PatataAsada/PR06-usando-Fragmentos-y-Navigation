@@ -12,6 +12,12 @@
         android:layout_height="match_parent">
 
         <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
             android:id="@+id/layout_avatar"
             layout="@layout/activity_profile"
             android:layout_width="0dp"
@@ -19,7 +25,7 @@
             app:layout_constraintBottom_toTopOf="@+id/layout_form"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <include
             android:id="@+id/layout_form"

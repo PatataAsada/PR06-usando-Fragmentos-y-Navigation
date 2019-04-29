@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.profileFragment.ProfileFragment"
+        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.studentFragment.StudentFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_student">
         <action

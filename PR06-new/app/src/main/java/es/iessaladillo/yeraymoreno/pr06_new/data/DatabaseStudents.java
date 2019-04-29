@@ -14,7 +14,7 @@ public class DatabaseStudents {
 
 
     // TODO: Define DatabaseStudents as a singleton.
-    private DatabaseStudents() {
+    public DatabaseStudents() {
         students.add(new Student( 1, 1,"Baldo", "baldo@hotmail.com", 999999, "casa", "www.miweb.es"));
         students.add(new Student( 2, 2,"Albedo", "baldo@hotmail.com", 999999, "casa", "www.miweb.es"));
         students.add(new Student( 3, 3,"Pipo", "baldo@hotmail.com", 999999, "casa", "www.miweb.es"));

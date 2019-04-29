@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.profileFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.studentFragment;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
@@ -28,9 +30,9 @@ import es.iessaladillo.yeraymoreno.pr06_new.utils.KeyboardUtils;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.TextChangedListener;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.ValidationUtils;
 
-public class ProfileFragment extends Fragment {
+public class StudentFragment extends Fragment {
 
-    public ProfileViewModel studentViewModel;
+    public StudentViewModel studentViewModel;
     public MainViewModel mainViewModel;
     private FragmentStudentBinding studentBinding;
 
@@ -38,8 +40,8 @@ public class ProfileFragment extends Fragment {
 
     private Intent intention;
 
-    public static ProfileFragment newInstance() {
-        return new ProfileFragment();
+    public static StudentFragment newInstance() {
+        return new StudentFragment();
     }
 
     @Override
@@ -54,13 +56,30 @@ public class ProfileFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //Sets navcontroller, gets viewmodel for current student(if edit was clicked).
         navController = NavHostFragment.findNavController(this);
-        studentViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-        mainViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getParentFragment())).get(MainViewModel.class);
+        studentViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity())).get(StudentViewModel.class);
+        mainViewModel = ViewModelProviders.of(this.getActivity()).get(MainViewModel.class);
         //Sets the image and form with data from viewmodel.
         setupViews();
         //Sets the click listeners.
         setupListeners();
+        //Sets the appbar for studentFragment.
+        setupToolbar(getView());
     }
+
+    //Sets the toolbar.
+    private void setupToolbar(View view) {
+        Toolbar toolbar = ViewCompat.requireViewById(view, R.id.toolbar);
+        toolbar.setTitle(R.string.fragment_student_toolbar);
+        toolbar.inflateMenu(R.menu.fragment_student);
+        toolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.mnuSave) {
+                save();
+                return true;
+            }
+            else return StudentFragment.super.onOptionsItemSelected(item);
+        });
+    }
+
 
     //Sets all needed listeners.
     private void setupListeners() {
@@ -96,10 +115,11 @@ public class ProfileFragment extends Fragment {
         studentBinding.layoutAvatar.lblAvatar.setOnClickListener(v -> changeAvatar());
     }
 
-    //TODO llamar fragmento avatar.
     //starts avatarFragment.
     private void changeAvatar() {
-
+        setStudent();
+        KeyboardUtils.hideSoftKeyboard(Objects.requireNonNull(getActivity()));
+        navController.navigate(R.id.action_profileFragment_to_avatarFragment);
     }
 
     //Sets click listheners for icons to send intent.
@@ -165,7 +185,7 @@ public class ProfileFragment extends Fragment {
     private void setForm() {
         studentBinding.layoutForm.txtName.setText(studentViewModel.getStudent().getName());
         studentBinding.layoutForm.txtEmail.setText(studentViewModel.getStudent().getEmail());
-        studentBinding.layoutForm.txtPhonenumber.setText(studentViewModel.getStudent().getPhonenumber());
+        studentBinding.layoutForm.txtPhonenumber.setText(String.valueOf(studentViewModel.getStudent().getPhonenumber()));
         studentBinding.layoutForm.txtAddress.setText(studentViewModel.getStudent().getAddress());
         studentBinding.layoutForm.txtWeb.setText(studentViewModel.getStudent().getWeb());
     }
@@ -210,7 +230,7 @@ public class ProfileFragment extends Fragment {
         studentViewModel.getStudent().setWeb(studentBinding.layoutForm.txtWeb.getText().toString());
     }
 
-    //TODO volver al mainFragment.
+
     //Checks form and, if form is valid, saves the student in database.
     private void save() {
         if (!ValidationUtils.isValidForm(studentBinding.layoutForm.txtEmail.getText().toString(), studentBinding.layoutForm.txtPhonenumber.getText().toString(), studentBinding.layoutForm.txtWeb.getText().toString(),
@@ -218,6 +238,7 @@ public class ProfileFragment extends Fragment {
             Snackbar.make(studentBinding.layoutForm.txtWeb, getString(R.string.main_saved_succesfully), Snackbar.LENGTH_SHORT).show();
             //Sends the student to the database.
             sendStudentToDataBase();
+            KeyboardUtils.hideSoftKeyboard(Objects.requireNonNull(getActivity()));
             close();
         } else {
             showErrors();
@@ -226,8 +247,9 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    //Returns to mainFragment
     private void close() {
-        this.navController.navigateUp();
+        navController.navigateUp();
     }
 
     //Sends the student to database.
