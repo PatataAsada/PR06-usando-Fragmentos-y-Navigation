@@ -8,6 +8,7 @@ import es.iessaladillo.yeraymoreno.pr06_new.data.Database;
 @SuppressWarnings("ALL")
 public class Student implements Parcelable {
 
+    private static long idsum;
     private long id;
     private Avatar avatar;
     private String name;
@@ -18,6 +19,7 @@ public class Student implements Parcelable {
 
     public Student(long id, int imageResId, String name, String email, int phonenumber, String address, String web) {
         this.id = id;
+        idsum = id;
         this.avatar = Database.getInstance().queryAvatars().get(imageResId);
         this.name = name;
         this.email = email;
@@ -48,7 +50,10 @@ public class Student implements Parcelable {
         }
     };
 
-    public Student() {}
+    public Student() {
+        idsum++;
+        id = idsum;
+    }
 
     public int getPhonenumber() {
         return phonenumber;
