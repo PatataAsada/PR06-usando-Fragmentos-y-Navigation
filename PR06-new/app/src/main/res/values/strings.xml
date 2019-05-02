@@ -31,4 +31,8 @@
     <string name="fragment_avatar_select">Select an avatar</string>
     <string name="fragment_student_toolbar">Student Form</string>
     <string name="fragment_main_toolbar">ReciclerView</string>
+    <string name="activity_main_option1">Lista</string>
+    <string name="activity_main_option2">Preferencias</string>
+    <string name="app_real_name">Repasos para aprobar una asignatura</string>
+    <string name="menu">menu</string>
 </resources>

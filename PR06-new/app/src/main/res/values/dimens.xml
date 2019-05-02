@@ -2,4 +2,7 @@
 <resources>
     <dimen name="main_lblEmptyView_drawablePadding">16dp</dimen>
     <dimen name="main_item_padding">8dp</dimen>
+    <dimen name="header_height">192px</dimen>
+    <dimen name="header_left_padding">16px</dimen>
+    <dimen name="header_text_dimen">18sp</dimen>
 </resources>

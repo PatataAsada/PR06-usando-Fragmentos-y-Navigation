@@ -2,13 +2,17 @@ package es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
@@ -21,6 +25,7 @@ import java.util.Objects;
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.data.DatabaseStudents;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
+import es.iessaladillo.yeraymoreno.pr06_new.databinding.ActivityMainWithDrawerBinding;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentMainBinding;
 import es.iessaladillo.yeraymoreno.pr06_new.ui.studentFragment.StudentViewModel;
 
@@ -33,6 +38,7 @@ public class MainFragment extends Fragment {
     private FragmentMainBinding mainFragmentBinding;
     private StudentViewModel pViewModel;
     public MainFragmentAdapter listAdapter;
+    public ActivityMainWithDrawerBinding activityMainWithDrawerBinding;
     public MainViewModel mViewModel;
     private NavController navController;
 
@@ -114,5 +120,17 @@ public class MainFragment extends Fragment {
     private void setupToolbar(View view) {
         Toolbar toolbar = ViewCompat.requireViewById(view, R.id.toolbar);
         toolbar.setTitle(R.string.fragment_main_toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_list_black_48dp);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                DrawerLayout drawerLayout = ViewCompat.requireViewById(Objects.requireNonNull(getView()), R.id.drawerLayout);
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
