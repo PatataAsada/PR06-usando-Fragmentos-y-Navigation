@@ -3,6 +3,7 @@ package es.iessaladillo.yeraymoreno.pr06_new.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+
 public class Avatar implements Parcelable {
     private static long id_setter = 1;
     private final long id;

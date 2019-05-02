@@ -3,18 +3,32 @@ package es.iessaladillo.yeraymoreno.pr06_new.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import es.iessaladillo.yeraymoreno.pr06_new.data.Database;
 
 @SuppressWarnings("ALL")
+@Entity
 public class Student implements Parcelable {
 
     private static long idsum;
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     private long id;
+    @ColumnInfo(name = "avatar")
     private Avatar avatar;
+    @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "email")
     private String email;
+    @ColumnInfo(name = "phonenumber")
     private int phonenumber;
+    @ColumnInfo(name = "address")
     private String address;
+    @ColumnInfo(name = "web")
     private String web;
 
     public Student(long id, int imageResId, String name, String email, int phonenumber, String address, String web) {
@@ -50,6 +64,7 @@ public class Student implements Parcelable {
         }
     };
 
+    @Ignore
     public Student() {
         idsum++;
         id = idsum;

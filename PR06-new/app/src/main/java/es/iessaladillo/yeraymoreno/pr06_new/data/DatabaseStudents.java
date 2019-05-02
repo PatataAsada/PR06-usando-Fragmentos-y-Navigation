@@ -13,7 +13,6 @@ public class DatabaseStudents {
     private MutableLiveData<List<Student>> studentsLiveData = new MutableLiveData<>();
 
 
-    // TODO: Define DatabaseStudents as a singleton.
     public DatabaseStudents() {
         students.add(new Student( 1, 1,"Baldo", "baldo@hotmail.com", 999999, "casa", "www.miweb.es"));
         students.add(new Student( 2, 2,"Albedo", "baldo@hotmail.com", 999999, "casa", "www.miweb.es"));
