@@ -14,11 +14,14 @@ import es.iessaladillo.yeraymoreno.pr06_new.data.Database;
 @Entity(tableName = "student")
 public class Student implements Parcelable {
 
-    private static long idsum;
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private long id;
+
     @ColumnInfo(name = "avatar")
+    private int avatarId;
+    @Ignore
     private Avatar avatar;
     @ColumnInfo(name = "name")
     private String name;
@@ -31,10 +34,10 @@ public class Student implements Parcelable {
     @ColumnInfo(name = "web")
     private String web;
 
-    public Student(long id, int imageResId, String name, String email, int phonenumber, String address, String web) {
+    public Student(long id, int avatarId, String name, String email, int phonenumber, String address, String web) {
         this.id = id;
-        idsum = id;
-        this.avatar = Database.getInstance().queryAvatars().get(imageResId);
+        this.avatarId = avatarId-1;
+        this.avatar = Database.getInstance().queryAvatars().get(this.avatarId);
         this.name = name;
         this.email = email;
         this.phonenumber = phonenumber;
@@ -42,6 +45,7 @@ public class Student implements Parcelable {
         this.web = web;
     }
 
+    @Ignore
     protected Student(Parcel in) {
         id = in.readLong();
         avatar = in.readParcelable(getClass().getClassLoader());
@@ -66,12 +70,11 @@ public class Student implements Parcelable {
 
     @Ignore
     public Student() {
-        idsum++;
-        id = idsum;
     }
 
     @Ignore
     public Student(int avatarResId, String name, String email, int phonenumber, String address, String web) {
+        this.avatarId = avatarResId;
         this.avatar = Database.getInstance().queryAvatar(avatarResId);
         this.name = name;
         this.email = email;
@@ -134,6 +137,15 @@ public class Student implements Parcelable {
 
     public void setAvatar(Avatar avatar) {
         this.avatar = avatar;
+    }
+
+    public int getAvatarId() {
+        return avatarId;
+    }
+
+    public void setAvatarId(int avatarId) {
+        avatar = Database.getInstance().queryAvatar(avatarId);
+        this.avatarId = avatarId;
     }
 
     @Override
