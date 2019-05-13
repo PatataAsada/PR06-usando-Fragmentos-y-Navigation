@@ -25,7 +25,7 @@ import java.util.Objects;
 
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentStudentBinding;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment.MainViewModel;
+import es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment.MainFragmentViewModel;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.KeyboardUtils;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.TextChangedListener;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.ValidationUtils;
@@ -33,7 +33,7 @@ import es.iessaladillo.yeraymoreno.pr06_new.utils.ValidationUtils;
 public class StudentFragment extends Fragment {
 
     public StudentViewModel studentViewModel;
-    public MainViewModel mainViewModel;
+    public MainFragmentViewModel mainFragmentViewModel;
     private FragmentStudentBinding studentBinding;
 
     private NavController navController;
@@ -57,7 +57,7 @@ public class StudentFragment extends Fragment {
         //Sets navcontroller, gets viewmodel for current student(if edit was clicked).
         navController = NavHostFragment.findNavController(this);
         studentViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity())).get(StudentViewModel.class);
-        mainViewModel = ViewModelProviders.of(this.getActivity()).get(MainViewModel.class);
+        mainFragmentViewModel = ViewModelProviders.of(this.getActivity()).get(MainFragmentViewModel.class);
         //Sets the image and form with data from viewmodel.
         setupViews();
         //Sets the click listeners.
@@ -225,7 +225,9 @@ public class StudentFragment extends Fragment {
     private void setStudent() {
         studentViewModel.getStudent().setName(studentBinding.layoutForm.txtName.getText().toString());
         studentViewModel.getStudent().setEmail(studentBinding.layoutForm.txtEmail.getText().toString());
-        studentViewModel.getStudent().setPhonenumber(Integer.parseInt(studentBinding.layoutForm.txtPhonenumber.getText().toString()));
+        if(!studentBinding.layoutForm.txtPhonenumber.getText().toString().equals("")){
+            studentViewModel.getStudent().setPhonenumber(Integer.parseInt(studentBinding.layoutForm.txtPhonenumber.getText().toString()));
+        }
         studentViewModel.getStudent().setAddress(studentBinding.layoutForm.txtAddress.getText().toString());
         studentViewModel.getStudent().setWeb(studentBinding.layoutForm.txtWeb.getText().toString());
     }
@@ -256,9 +258,9 @@ public class StudentFragment extends Fragment {
     private void sendStudentToDataBase() {
         setStudent();
         if (studentViewModel.isEdit) {
-            mainViewModel.editStudent(studentViewModel.getOldStudent(), studentViewModel.getStudent());
+            mainFragmentViewModel.editStudent(studentViewModel.getOldStudent(), studentViewModel.getStudent());
         } else {
-            mainViewModel.addStudent(studentViewModel.getStudent());
+            mainFragmentViewModel.addStudent(studentViewModel.getStudent());
         }
     }
 

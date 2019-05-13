@@ -11,11 +11,11 @@ import androidx.room.PrimaryKey;
 import es.iessaladillo.yeraymoreno.pr06_new.data.Database;
 
 @SuppressWarnings("ALL")
-@Entity
+@Entity(tableName = "student")
 public class Student implements Parcelable {
 
     private static long idsum;
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private long id;
     @ColumnInfo(name = "avatar")
@@ -68,6 +68,16 @@ public class Student implements Parcelable {
     public Student() {
         idsum++;
         id = idsum;
+    }
+
+    @Ignore
+    public Student(int avatarResId, String name, String email, int phonenumber, String address, String web) {
+        this.avatar = Database.getInstance().queryAvatar(avatarResId);
+        this.name = name;
+        this.email = email;
+        this.phonenumber = phonenumber;
+        this.address = address;
+        this.web = web;
     }
 
     public int getPhonenumber() {

@@ -2,7 +2,6 @@ package es.iessaladillo.yeraymoreno.pr06_new.ui.avatarFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -145,7 +144,7 @@ public class AvatarFragment extends Fragment {
     //sets new avatar in studentViewmodel and returns to StudentFragment.
     private void returnAvatar() {
         aViewModel.setAvatarSelected(Database.getInstance().queryAvatar(aViewModel.getAvatarIdSelected()));
-        sViewmodel.getStudent().setAvatar(aViewModel.getAvatarSelected());
+        sViewmodel.getStudent().setAvatarId(aViewModel.getAvatarIdSelected());
         navController.navigateUp();
     }
 

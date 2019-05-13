@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
@@ -23,7 +22,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import java.util.Objects;
 
 import es.iessaladillo.yeraymoreno.pr06_new.R;
-import es.iessaladillo.yeraymoreno.pr06_new.data.DatabaseStudents;
+import es.iessaladillo.yeraymoreno.pr06_new.data.AppDatabaseStudents;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.ActivityMainWithDrawerBinding;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentMainBinding;
@@ -38,8 +37,7 @@ public class MainFragment extends Fragment {
     private FragmentMainBinding mainFragmentBinding;
     private StudentViewModel pViewModel;
     public MainFragmentAdapter listAdapter;
-    public ActivityMainWithDrawerBinding activityMainWithDrawerBinding;
-    public MainViewModel mViewModel;
+    public MainFragmentViewModel mViewModel;
     private NavController navController;
 
     @Override
@@ -53,10 +51,13 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
-        mViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(new DatabaseStudents())).get(MainViewModel.class);
+        mViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
         observeStudents();
+        //Por si la lio de vuelta con algun dato en la bdd que hace que pete la app esto vacia todas las tablas.
+        //mViewModel.deleteAllStudents();
         setupViews();
         setupToolbar(getView());
+
     }
 
     //Gets an observable to look for the students.

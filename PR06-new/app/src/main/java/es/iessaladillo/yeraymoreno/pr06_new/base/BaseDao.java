@@ -4,6 +4,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Update;
 
+//Caso base, sirve para cualquier tabla en room si la implementas.
 public interface BaseDao<M> {
     @Insert
     long insert(M model);

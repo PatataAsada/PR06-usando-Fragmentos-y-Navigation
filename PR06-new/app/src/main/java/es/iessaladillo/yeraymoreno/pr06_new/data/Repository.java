@@ -12,7 +12,7 @@ import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 public interface Repository {
     LiveData<List<Student>> queryStudents();
 
-    LiveData<Student> queryStudent();
+    LiveData<Student> queryStudent(long id);
 
     LiveData<Resource<Long>> insertStudent(Student student);
 

@@ -1,5 +1,6 @@
 package es.iessaladillo.yeraymoreno.pr06_new.base;
 
+//Notificador que puede usarse para saber el estado de un recurso.
 public class Resource<T> {
     enum Status { SUCCESS, ERROR, LOADING }
 

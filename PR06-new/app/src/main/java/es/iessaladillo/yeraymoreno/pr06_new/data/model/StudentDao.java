@@ -6,8 +6,10 @@ import androidx.room.Query;
 
 import java.util.List;
 
+import es.iessaladillo.yeraymoreno.pr06_new.base.BaseDao;
+
 @Dao
-public interface StudentDao {
+public interface StudentDao extends BaseDao<Student> {
 
     @Query("SELECT * FROM Student WHERE id = :studentId")
     LiveData<Student> queryStudent(long studentId);
