@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.mainFragment;
 
 import android.os.AsyncTask;
 
@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import es.iessaladillo.yeraymoreno.pr06_new.data.AppDatabaseStudents;
-import es.iessaladillo.yeraymoreno.pr06_new.data.DatabaseStudents;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 
 public class MainFragmentViewModel extends ViewModel {

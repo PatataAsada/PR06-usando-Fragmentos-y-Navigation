@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

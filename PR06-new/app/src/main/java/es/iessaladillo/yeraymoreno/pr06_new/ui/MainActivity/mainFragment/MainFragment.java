@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.mainFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,9 +24,8 @@ import java.util.Objects;
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.data.AppDatabaseStudents;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
-import es.iessaladillo.yeraymoreno.pr06_new.databinding.ActivityMainWithDrawerBinding;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentMainBinding;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.studentFragment.StudentViewModel;
+import es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.studentFragment.StudentViewModel;
 
 public class MainFragment extends Fragment {
 

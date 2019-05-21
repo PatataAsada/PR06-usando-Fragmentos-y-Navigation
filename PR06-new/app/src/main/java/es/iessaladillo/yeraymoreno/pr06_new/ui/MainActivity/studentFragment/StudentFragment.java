@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.studentFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.studentFragment;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -25,7 +25,7 @@ import java.util.Objects;
 
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentStudentBinding;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment.MainFragmentViewModel;
+import es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.mainFragment.MainFragmentViewModel;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.KeyboardUtils;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.TextChangedListener;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.ValidationUtils;

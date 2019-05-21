@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.mainFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.mainFragment;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
