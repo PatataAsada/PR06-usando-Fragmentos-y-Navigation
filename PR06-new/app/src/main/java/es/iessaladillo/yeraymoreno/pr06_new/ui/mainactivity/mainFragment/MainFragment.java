@@ -52,8 +52,6 @@ public class MainFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         mViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
         observeStudents();
-        //Por si la lio de vuelta con algun dato en la bdd que hace que pete la app esto vacia todas las tablas.
-        //mViewModel.deleteAllStudents();
         setupViews();
         setupToolbar(getView());
 
