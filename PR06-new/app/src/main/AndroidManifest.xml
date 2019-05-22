@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.studentactivity.StudentActivity"></activity>
+        <activity android:name=".ui.settingsactivity.SettingsActivity"></activity>
+        <activity android:name=".ui.studentactivity.StudentActivity" />
         <activity android:name=".ui.mainactivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
