@@ -37,7 +37,6 @@ public class MainFragment extends Fragment {
     private StudentViewModel pViewModel;
     public MainFragmentAdapter listAdapter;
     public MainFragmentViewModel mViewModel;
-    private NavController navController;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -49,7 +48,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        navController = NavHostFragment.findNavController(this);
         mViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
         observeStudents();
         setupViews();
@@ -102,7 +100,7 @@ public class MainFragment extends Fragment {
         pViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity())).get(StudentViewModel.class);
         pViewModel.setStudent(item);
         pViewModel.isEdit = true;
-        navController.navigate(R.id.action_mainFragment_to_profileFragment);
+        sendIntent();
     }
 
     //Goes to StudentFragment to create a new student.
@@ -111,7 +109,11 @@ public class MainFragment extends Fragment {
         pViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
         pViewModel.setStudent(null);
         pViewModel.isEdit = false;
-        navController.navigate(R.id.action_mainFragment_to_profileFragment);
+        sendIntent();
+    }
+
+    private void sendIntent() {
+        //TODO Hacer intent para editar/annadir estudiante.
     }
 
     //Sets the toolbar title.
