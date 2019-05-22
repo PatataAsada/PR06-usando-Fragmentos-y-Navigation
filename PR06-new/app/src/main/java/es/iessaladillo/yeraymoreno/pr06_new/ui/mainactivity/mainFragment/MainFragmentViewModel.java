@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.mainFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.mainFragment;
 
 import android.os.AsyncTask;
 
@@ -39,6 +39,6 @@ public class MainFragmentViewModel extends ViewModel {
     }
 
     public void deleteAllStudents(){
-        AsyncTask.THREAD_POOL_EXECUTOR.execute(()->databaseStudents.clearAllTables());
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(databaseStudents::clearAllTables);
     }
 }

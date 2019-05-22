@@ -1,11 +1,7 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity;
 
-import java.util.List;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import es.iessaladillo.yeraymoreno.pr06_new.data.DatabaseStudents;
-import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 
 @SuppressWarnings("WeakerAccess")
 public class MainActivityViewModel extends ViewModel {

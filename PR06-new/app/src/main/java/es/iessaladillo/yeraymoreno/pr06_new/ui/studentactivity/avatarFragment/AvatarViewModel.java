@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.avatarFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.avatarFragment;
 
 import androidx.lifecycle.ViewModel;
 

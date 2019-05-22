@@ -6,7 +6,7 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.mainFragment.MainFragment"
+        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.mainFragment.MainFragment"
         android:label="students list"
         tools:layout="@layout/activity_main" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/avatarFragment"
-        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.avatarFragment.AvatarFragment"
+        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.avatarFragment.AvatarFragment"
         android:label="avatar selection"
         tools:layout="@layout/activity_avatar" >
         <argument
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.studentFragment.StudentFragment"
+        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.studentFragment.StudentFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_student">
         <action

@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.mainFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.mainFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,7 +25,7 @@ import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.data.AppDatabaseStudents;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentMainBinding;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.studentFragment.StudentViewModel;
+import es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.studentFragment.StudentViewModel;
 
 public class MainFragment extends Fragment {
 
@@ -127,7 +127,7 @@ public class MainFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                DrawerLayout drawerLayout = ViewCompat.requireViewById(Objects.requireNonNull(getView()), R.id.drawerLayout);
+                DrawerLayout drawerLayout = ViewCompat.requireViewById(Objects.requireNonNull(getView()), R.id.drawer_layout);
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }

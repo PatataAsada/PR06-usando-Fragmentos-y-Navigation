@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity.preferencesFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.preferencesFragment;
 
 import androidx.lifecycle.ViewModelProviders;
 

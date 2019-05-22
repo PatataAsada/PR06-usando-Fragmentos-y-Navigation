@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.MainActivity;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity;
 
 import android.os.Bundle;
 
