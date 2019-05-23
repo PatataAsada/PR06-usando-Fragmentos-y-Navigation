@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.settingsactivity.SettingsActivity"></activity>
+        <activity android:name=".ui.settingsactivity.SettingsActivity" />
         <activity android:name=".ui.studentactivity.StudentActivity" />
         <activity android:name=".ui.mainactivity.MainActivity">
             <intent-filter>
@@ -20,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.mainactivity.MainActivityWithDrawer" />
     </application>
 
 </manifest>

@@ -125,17 +125,6 @@ public class MainFragment extends Fragment {
         toolbar.setNavigationIcon(R.drawable.ic_list_black_48dp);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                DrawerLayout drawerLayout = ViewCompat.requireViewById(Objects.requireNonNull(getView()), R.id.drawer_layout);
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void sendIntent() {
         studentIntent = new Intent(getContext(), StudentActivity.class);
         studentIntent.putExtra(STUDENT, pViewModel.getStudent());

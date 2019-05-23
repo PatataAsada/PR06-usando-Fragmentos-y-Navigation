@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Crea una sección con divisor y sus elementos son seleccionables -->
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/mnuListOption"
+            android:icon="@drawable/ic_list_black_48dp"
+            android:title="@string/activity_main_option2"/>
+        <item
+            android:id="@+id/mnuSettingsOption"
+            android:icon="@drawable/ic_build_black_48dp"
+            android:title="@string/activity_main_option1"/>
+        <item
+            android:id="@+id/mnuThreadOption"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/activity_main_option2"/>
+    </group>
+</menu>

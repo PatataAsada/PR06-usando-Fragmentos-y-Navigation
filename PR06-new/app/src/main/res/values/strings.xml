@@ -43,11 +43,4 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_list">List Students</string>
-    <string name="menu_settings">Settings</string>
-    <string name="menu_threads">Threads</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-
 </resources>
