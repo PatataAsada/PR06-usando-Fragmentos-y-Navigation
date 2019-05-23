@@ -5,8 +5,6 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -85,11 +83,9 @@ public class MainActivityWithDrawer extends AppCompatActivity
 
         if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_threads) {
 
         }
 

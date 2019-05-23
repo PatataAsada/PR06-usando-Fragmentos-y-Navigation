@@ -9,17 +9,13 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_list" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_build_black_48dp"
             android:title="@string/menu_settings" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_threads"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:title="@string/menu_threads" />
     </group>
 
 </menu>

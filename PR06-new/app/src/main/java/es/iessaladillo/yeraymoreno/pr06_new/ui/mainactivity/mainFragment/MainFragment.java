@@ -138,10 +138,13 @@ public class MainFragment extends Fragment {
 
     private void sendIntent() {
         studentIntent = new Intent(getContext(), StudentActivity.class);
-        studentIntent.putExtra(STUDENT,pViewModel.getStudent());
-        if(pViewModel.isEdit){
-            startActivityForResult(studentIntent,EDIT_STUDENT);
+        studentIntent.putExtra(STUDENT, pViewModel.getStudent());
+        if (pViewModel.isEdit) {
+            startActivityForResult(studentIntent, EDIT_STUDENT);
             onActivityResult(EDIT_STUDENT, Activity.RESULT_OK, studentIntent);
+        } else {
+            startActivityForResult(studentIntent, ADD_STUDENT);
+            onActivityResult(ADD_STUDENT, Activity.RESULT_OK, studentIntent);
         }
     }
 
@@ -150,11 +153,11 @@ public class MainFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == EDIT_STUDENT) {
             if (resultCode == Activity.RESULT_OK) {
-                mViewModel.editStudent(pViewModel.getOldStudent(),Objects.requireNonNull(data).getParcelableExtra(STUDENT));
+                mViewModel.editStudent(pViewModel.getOldStudent(), Objects.requireNonNull(data).getParcelableExtra(STUDENT));
             }
         }
-        if(requestCode == ADD_STUDENT){
-            if(resultCode == Activity.RESULT_OK){
+        if (requestCode == ADD_STUDENT) {
+            if (resultCode == Activity.RESULT_OK) {
                 mViewModel.addStudent(Objects.requireNonNull(data).getParcelableExtra(STUDENT));
             }
         }
