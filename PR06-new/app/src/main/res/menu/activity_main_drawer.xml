@@ -8,16 +8,16 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/mnuListOption"
+            android:id="@+id/mnuHomeOption"
             android:icon="@drawable/ic_list_black_48dp"
-            android:title="@string/activity_main_option2"/>
+            android:title="@string/mnu_list"/>
         <item
             android:id="@+id/mnuSettingsOption"
             android:icon="@drawable/ic_build_black_48dp"
-            android:title="@string/activity_main_option1"/>
+            android:title="@string/mnu_settings"/>
         <item
             android:id="@+id/mnuThreadOption"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/activity_main_option2"/>
+            android:title="@string/mnu_thread1"/>
     </group>
 </menu>

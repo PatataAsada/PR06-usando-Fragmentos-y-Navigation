@@ -37,9 +37,9 @@ public class MainFragment extends Fragment {
 
     private FragmentMainBinding mainFragmentBinding;
     private StudentViewModel pViewModel;
-    public MainFragmentAdapter listAdapter;
+    private MainFragmentAdapter listAdapter;
     public MainFragmentViewModel mViewModel;
-    public Intent studentIntent;
+    private Intent studentIntent;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -54,8 +54,6 @@ public class MainFragment extends Fragment {
         mViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
         observeStudents();
         setupViews();
-        setupToolbar(getView());
-
     }
 
     //Gets an observable to look for the students.
@@ -113,13 +111,6 @@ public class MainFragment extends Fragment {
         pViewModel.setStudent(null);
         pViewModel.isEdit = false;
         sendIntent();
-    }
-
-    //Sets the toolbar title.
-    private void setupToolbar(View view) {
-        Toolbar toolbar = ViewCompat.requireViewById(view, R.id.toolbar);
-        toolbar.setTitle(R.string.fragment_main_toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_list_black_48dp);
     }
 
     private void sendIntent() {

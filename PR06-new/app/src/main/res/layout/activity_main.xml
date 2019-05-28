@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-        <fragment
+        <FrameLayout
             android:id="@+id/frglist"
             android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.mainFragment.MainFragment"
             android:layout_width="0dp"
