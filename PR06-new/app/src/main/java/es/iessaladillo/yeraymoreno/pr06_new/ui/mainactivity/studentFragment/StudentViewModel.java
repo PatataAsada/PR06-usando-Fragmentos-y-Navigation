@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.studentFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.studentFragment;
 
 import androidx.lifecycle.ViewModel;
 

@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.studentFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.studentFragment;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -119,7 +119,7 @@ public class StudentFragment extends Fragment {
     private void changeAvatar() {
         setStudent();
         KeyboardUtils.hideSoftKeyboard(Objects.requireNonNull(getActivity()));
-        navController.navigate(R.id.action_profileFragment_to_avatarFragment);
+        navController.navigate(R.id.action_studentFragment_to_avatarFragment);
     }
 
     //Sets click listheners for icons to send intent.

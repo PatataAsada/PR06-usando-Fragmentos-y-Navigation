@@ -53,7 +53,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
     @Override
     public void onBackPressed() {
         if(drawerLayoutBinding.drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayoutBinding.drawerLayout.closeDrawer(GravityCompat.END);
+            drawerLayoutBinding.drawerLayout.closeDrawer(GravityCompat.START);
         }else{
             super.onBackPressed();
         }

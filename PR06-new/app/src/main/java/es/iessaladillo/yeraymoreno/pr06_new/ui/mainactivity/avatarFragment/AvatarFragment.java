@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.avatarFragment;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.avatarFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +19,7 @@ import java.util.Objects;
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.data.Database;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.ActivityAvatarBinding;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.studentFragment.StudentViewModel;
+import es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.studentFragment.StudentViewModel;
 import es.iessaladillo.yeraymoreno.pr06_new.utils.ResourcesUtils;
 
 public class AvatarFragment extends Fragment {

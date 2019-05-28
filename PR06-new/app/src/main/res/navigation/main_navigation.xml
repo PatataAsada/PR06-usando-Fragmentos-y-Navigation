@@ -10,30 +10,19 @@
         android:label="students list"
         tools:layout="@layout/activity_main" >
         <action
-            android:id="@+id/action_mainFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_mainFragment_to_studentFragment"
+            app:destination="@id/studentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentFragment"
+        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.studentFragment.StudentFragment"
+        android:label="StudentFragment" >
+        <action
+            android:id="@+id/action_studentFragment_to_avatarFragment"
+            app:destination="@id/avatarFragment" />
     </fragment>
     <fragment
         android:id="@+id/avatarFragment"
-        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.avatarFragment.AvatarFragment"
-        android:label="avatar selection"
-        tools:layout="@layout/activity_avatar" >
-        <argument
-            android:name="avatar"
-            app:argType="es.iessaladillo.yeraymoreno.pr06_new.data.model.Avatar" />
-    </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.studentFragment.StudentFragment"
-        android:label="Profile"
-        tools:layout="@layout/fragment_student">
-        <action
-            android:id="@+id/action_profileFragment_to_avatarFragment"
-            app:destination="@id/avatarFragment" />
-        <argument
-            android:name="student"
-            app:argType="es.iessaladillo.yeraymoreno.pr06_new.data.model.Student"
-            app:nullable="true"
-            android:defaultValue="@null" />
-    </fragment>
+        android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.avatarFragment.AvatarFragment"
+        android:label="AvatarFragment" />
 </navigation>

@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -22,8 +22,7 @@ import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.data.AppDatabaseStudents;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.FragmentMainBinding;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.StudentActivity;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.studentactivity.studentFragment.StudentViewModel;
+import es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.studentFragment.StudentViewModel;
 
 public class MainFragment extends Fragment {
 
@@ -36,6 +35,7 @@ public class MainFragment extends Fragment {
     }
 
     private FragmentMainBinding mainFragmentBinding;
+    private NavController navController;
     private StudentViewModel pViewModel;
     private MainFragmentAdapter listAdapter;
     public MainFragmentViewModel mViewModel;
@@ -52,6 +52,7 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
+        navController = NavHostFragment.findNavController(this);
         observeStudents();
         setupViews();
     }
@@ -101,7 +102,7 @@ public class MainFragment extends Fragment {
         pViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity())).get(StudentViewModel.class);
         pViewModel.setStudent(item);
         pViewModel.isEdit = true;
-        sendIntent();
+        navigateToStudent();
     }
 
     //Goes to StudentFragment to create a new student.
@@ -110,19 +111,11 @@ public class MainFragment extends Fragment {
         pViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
         pViewModel.setStudent(null);
         pViewModel.isEdit = false;
-        sendIntent();
+        navigateToStudent();
     }
 
-    private void sendIntent() {
-        studentIntent = new Intent(getContext(), StudentActivity.class);
-        studentIntent.putExtra(STUDENT, pViewModel.getStudent());
-        if (pViewModel.isEdit) {
-            startActivityForResult(studentIntent, EDIT_STUDENT);
-            onActivityResult(EDIT_STUDENT, Activity.RESULT_OK, studentIntent);
-        } else {
-            startActivityForResult(studentIntent, ADD_STUDENT);
-            onActivityResult(ADD_STUDENT, Activity.RESULT_OK, studentIntent);
-        }
+    private void navigateToStudent() {
+        navController.navigate(R.id.action_mainFragment_to_studentFragment);
     }
 
     @Override

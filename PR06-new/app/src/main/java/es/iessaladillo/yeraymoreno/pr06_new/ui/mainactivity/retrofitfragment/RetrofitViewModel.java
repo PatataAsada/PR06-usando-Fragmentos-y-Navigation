@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.retrofit;
+package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.retrofitfragment;
 
 import androidx.lifecycle.ViewModel;
 
