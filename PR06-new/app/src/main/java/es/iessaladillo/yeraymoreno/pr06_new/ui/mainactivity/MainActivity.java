@@ -6,22 +6,21 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.navigation.NavigationView;
 
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 import es.iessaladillo.yeraymoreno.pr06_new.databinding.DrawerLayoutBinding;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.mainFragment.MainFragment;
-import es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.preferencesFragment.PreferenceFragment;
 
 public class MainActivity extends AppCompatActivity
 implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayoutBinding drawerLayoutBinding;
+    private NavController navController;
 
     private static final String STUDENT_LIST = "STUDENT_LIST";
 
@@ -30,6 +29,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
         super.onCreate(savedInstanceState);
         drawerLayoutBinding = DataBindingUtil.setContentView(this,R.layout.drawer_layout);
 
+        navController = Navigation.findNavController(this,R.id.frglist);
         setToolbar();
         setNavigation();
     }
@@ -63,16 +63,15 @@ implements NavigationView.OnNavigationItemSelectedListener {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.mnuHomeOption:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frglist,
-                        new MainFragment()).commit();
+                navController.navigateUp();
                 break;
             case R.id.mnuSettingsOption:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frglist,
-                        new PreferenceFragment()).commit();
+                navController.navigateUp();
+                navController.navigate(R.id.action_mainFragment_to_preferenceFragment);
                 break;
             case R.id.mnuThreadOption:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frglist,
-                        new MainFragment()).commit();
+                navController.navigateUp();
+                navController.navigate(R.id.action_mainFragment_to_retrofitFragment);
                 break;
         }
         return true;

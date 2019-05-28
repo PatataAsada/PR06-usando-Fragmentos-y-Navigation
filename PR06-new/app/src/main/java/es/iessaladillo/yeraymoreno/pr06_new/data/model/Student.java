@@ -36,7 +36,7 @@ public class Student implements Parcelable {
 
     public Student(long id, int avatarId, String name, String email, int phonenumber, String address, String web) {
         this.id = id;
-        this.avatarId = avatarId-1;
+        this.avatarId = avatarId;
         this.avatar = Database.getInstance().queryAvatars().get(this.avatarId);
         this.name = name;
         this.email = email;
