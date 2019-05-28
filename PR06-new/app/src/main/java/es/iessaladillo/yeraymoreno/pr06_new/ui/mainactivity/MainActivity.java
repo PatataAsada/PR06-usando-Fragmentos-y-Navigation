@@ -5,11 +5,9 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import java.util.Objects;
 
 import es.iessaladillo.yeraymoreno.pr06_new.R;
 
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                DrawerLayout drawerLayout = ViewCompat.requireViewById(this, R.id.navigationView);
+                DrawerLayout drawerLayout = ActivityCompat.requireViewById(this, R.id.navigationView);
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
         }
