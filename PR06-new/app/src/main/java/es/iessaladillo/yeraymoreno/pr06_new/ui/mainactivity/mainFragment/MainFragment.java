@@ -36,9 +36,9 @@ public class MainFragment extends Fragment {
 
     private FragmentMainBinding mainFragmentBinding;
     private NavController navController;
-    private StudentViewModel pViewModel;
+    private StudentViewModel studentViewModel;
     private MainFragmentAdapter listAdapter;
-    public MainFragmentViewModel mViewModel;
+    public MainFragmentViewModel mainFragmentViewModel;
     private Intent studentIntent;
 
     @Override
@@ -51,7 +51,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
+        mainFragmentViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
         navController = NavHostFragment.findNavController(this);
         observeStudents();
         setupViews();
@@ -59,7 +59,7 @@ public class MainFragment extends Fragment {
 
     //Gets an observable to look for the students.
     private void observeStudents() {
-        mViewModel.getStudents(true).observe(this, students -> {
+        mainFragmentViewModel.getStudents(true).observe(this, students -> {
             listAdapter.submitList(students);
             mainFragmentBinding.lblEmptyView.setVisibility(students.size() == 0 ? View.VISIBLE : View.INVISIBLE);
             mainFragmentBinding.btnAdd.setVisibility(students.size() == 0 ? View.INVISIBLE : View.VISIBLE);
@@ -94,42 +94,27 @@ public class MainFragment extends Fragment {
 
     //Deletes chosen student.
     private void deleteStudent(Student item) {
-        mViewModel.deleteStudent(item);
+        mainFragmentViewModel.deleteStudent(item);
     }
 
     //Goes to StudentFragment with selected student to edit.
     private void editStudent(Student item) {
-        pViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity())).get(StudentViewModel.class);
-        pViewModel.setStudent(item);
-        pViewModel.isEdit = true;
+        studentViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity())).get(StudentViewModel.class);
+        studentViewModel.setStudent(item);
+        studentViewModel.isEdit = true;
         navigateToStudent();
     }
 
     //Goes to StudentFragment to create a new student.
     private void addStudent() {
         Student item = null;
-        pViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
-        pViewModel.setStudent(null);
-        pViewModel.isEdit = false;
+        studentViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
+        studentViewModel.setStudent(item);
+        studentViewModel.isEdit = false;
         navigateToStudent();
     }
 
     private void navigateToStudent() {
         navController.navigate(R.id.action_mainFragment_to_studentFragment);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == EDIT_STUDENT) {
-            if (resultCode == Activity.RESULT_OK) {
-                mViewModel.editStudent(pViewModel.getOldStudent(), Objects.requireNonNull(data).getParcelableExtra(STUDENT));
-            }
-        }
-        if (requestCode == ADD_STUDENT) {
-            if (resultCode == Activity.RESULT_OK) {
-                mViewModel.addStudent(Objects.requireNonNull(data).getParcelableExtra(STUDENT));
-            }
-        }
     }
 }

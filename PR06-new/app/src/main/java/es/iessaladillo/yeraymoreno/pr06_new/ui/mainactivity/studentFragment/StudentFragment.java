@@ -239,6 +239,7 @@ public class StudentFragment extends Fragment {
                 studentBinding.layoutForm.txtName.getText().toString(), studentBinding.layoutForm.txtAddress.getText().toString())) {
             Snackbar.make(studentBinding.layoutForm.txtWeb, getString(R.string.main_saved_succesfully), Snackbar.LENGTH_SHORT).show();
             //Sends the student to the database.
+            setStudent();
             sendStudentToDataBase();
             KeyboardUtils.hideSoftKeyboard(Objects.requireNonNull(getActivity()));
             close();
