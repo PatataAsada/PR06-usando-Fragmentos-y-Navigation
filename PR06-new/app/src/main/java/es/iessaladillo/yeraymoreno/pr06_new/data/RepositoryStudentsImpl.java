@@ -11,10 +11,10 @@ import es.iessaladillo.yeraymoreno.pr06_new.base.Resource;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.StudentDao;
 
-public class RepositoryImpl implements Repository {
+public class RepositoryStudentsImpl implements RepositoryStudents {
     private final StudentDao studentDao;
 
-    public RepositoryImpl(StudentDao studentDao){
+    public RepositoryStudentsImpl(StudentDao studentDao){
         this.studentDao = studentDao;
     }
 

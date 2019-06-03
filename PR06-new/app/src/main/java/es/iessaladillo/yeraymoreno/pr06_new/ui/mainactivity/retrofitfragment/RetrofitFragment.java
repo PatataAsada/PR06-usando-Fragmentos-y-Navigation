@@ -25,7 +25,7 @@ public class RetrofitFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.retrofit_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_retrofit, container, false);
     }
 
     @Override

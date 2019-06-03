@@ -1,5 +1,7 @@
 package es.iessaladillo.yeraymoreno.pr06_new.base;
 
+import es.iessaladillo.yeraymoreno.pr06_new.data.remote.dto.JokeDto;
+
 //Notificador que puede usarse para saber el estado de un recurso.
 public class Resource<T> {
     enum Status { SUCCESS, ERROR, LOADING }
@@ -31,7 +33,7 @@ public class Resource<T> {
         return status == Status.SUCCESS;
     }
 
-    public T getData() {
+    public JokeDto getData() {
         return data;
     }
 

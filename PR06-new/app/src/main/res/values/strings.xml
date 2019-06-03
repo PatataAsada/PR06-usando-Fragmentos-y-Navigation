@@ -43,5 +43,7 @@
     <string name="action_settings">Settings</string>
     <string name="navheader_title">Pues este es el navdrawer</string>
     <string name="mnu_thread1">multihilos 1</string>
+    <string name="btnJoke_txt">chiste</string>
+    <string name="lbl_joke_default">Pulsa el botón para tener un chiste</string>
 
 </resources>

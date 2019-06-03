@@ -40,5 +40,5 @@
         android:id="@+id/retrofitFragment2"
         android:name="es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.retrofitfragment.RetrofitFragment"
         android:label="retrofit_fragment"
-        tools:layout="@layout/retrofit_fragment" />
+        tools:layout="@layout/fragment_retrofit" />
 </navigation>

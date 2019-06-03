@@ -7,7 +7,7 @@ import java.util.List;
 import es.iessaladillo.yeraymoreno.pr06_new.base.Resource;
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 
-public interface Repository {
+public interface RepositoryStudents {
     LiveData<List<Student>> queryStudents();
 
     LiveData<Student> queryStudent(long id);
