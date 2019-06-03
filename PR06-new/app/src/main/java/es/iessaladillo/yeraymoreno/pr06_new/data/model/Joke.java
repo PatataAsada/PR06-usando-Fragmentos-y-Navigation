@@ -1,4 +1,4 @@
-package es.iessaladillo.yeraymoreno.pr06_new.data;
+package es.iessaladillo.yeraymoreno.pr06_new.data.model;
 
 public class Joke {
     private String icon_url;

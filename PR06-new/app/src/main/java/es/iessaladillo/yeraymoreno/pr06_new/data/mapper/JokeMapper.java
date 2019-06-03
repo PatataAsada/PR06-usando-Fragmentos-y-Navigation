@@ -1,15 +1,11 @@
-package es.iessaladillo.yeraymoreno.pr06_new.data;
+package es.iessaladillo.yeraymoreno.pr06_new.data.mapper;
 
 import es.iessaladillo.yeraymoreno.pr06_new.data.model.Joke;
 import es.iessaladillo.yeraymoreno.pr06_new.data.remote.dto.JokeDto;
 
-class JokeMapper {
-    public static Joke map(Joke data) {
+public class JokeMapper {
 
-        
-    }
-
-    public Joke map(JokeDto jokeDto){
+    public static Joke map(JokeDto jokeDto){
         return new Joke(jokeDto.getIcon_url(),jokeDto.getId(),jokeDto.getUrl(),jokeDto.getValue());
     }
 }
