@@ -63,15 +63,13 @@ implements NavigationView.OnNavigationItemSelectedListener {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.mnuHomeOption:
-                navController.navigateUp();
+                navController.navigate(R.id.mainFragment);
                 break;
             case R.id.mnuSettingsOption:
-                navController.navigateUp();
-                navController.navigate(R.id.action_mainFragment_to_preferenceFragment);
+                navController.navigate(R.id.preferenceFragment2);
                 break;
             case R.id.mnuThreadOption:
-                navController.navigateUp();
-                navController.navigate(R.id.action_mainFragment_to_retrofitFragment);
+                navController.navigate(R.id.retrofitFragment2);
                 break;
         }
         return true;

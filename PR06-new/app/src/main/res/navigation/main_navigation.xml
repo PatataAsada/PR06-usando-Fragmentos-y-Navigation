@@ -12,12 +12,6 @@
         <action
             android:id="@+id/action_mainFragment_to_studentFragment"
             app:destination="@id/studentFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_preferenceFragment"
-            app:destination="@id/preferenceFragment2" />
-        <action
-            android:id="@+id/action_mainFragment_to_retrofitFragment"
-            app:destination="@id/retrofitFragment2" />
     </fragment>
     <fragment
         android:id="@+id/studentFragment"

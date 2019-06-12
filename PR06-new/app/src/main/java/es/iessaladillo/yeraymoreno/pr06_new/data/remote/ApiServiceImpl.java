@@ -33,13 +33,12 @@ public class ApiServiceImpl implements ApiService {
 
 
     @Override
-    public MutableLiveData<Resource<JokeDto>> getJoke(String tag) {
+    public MutableLiveData<Resource<JokeDto>> getJoke() {
         MutableLiveData<Resource<JokeDto>> result = new MutableLiveData<>();
         result.setValue(Resource.loading());
-        Call<JokeDto> studentsCall = api.getJoke();
-        String[] tagsArray = (String[]) studentsCall.request().tag();
-        if (tagsArray != null) tagsArray[0] = tag;
-        studentsCall.enqueue(new retrofit2.Callback<JokeDto>() {
+        Call<JokeDto> jokeCall = api.getJoke();
+
+        jokeCall.enqueue(new retrofit2.Callback<JokeDto>() {
             @Override
             public void onResponse(@NonNull Call<JokeDto> call,
                                    @NonNull Response<JokeDto> response) {
@@ -61,7 +60,8 @@ public class ApiServiceImpl implements ApiService {
 
     public interface Api {
 
-        @GET("Joke")
+        @GET("random")
+
         Call<JokeDto> getJoke();
 
     }

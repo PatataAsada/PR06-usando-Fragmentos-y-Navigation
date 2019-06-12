@@ -51,7 +51,8 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mainFragmentViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()), new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
+        mainFragmentViewModel = ViewModelProviders.of(Objects.requireNonNull(this.getActivity()),
+                new MainFragmentViewModelFactory(AppDatabaseStudents.getInstance(getContext()))).get(MainFragmentViewModel.class);
         navController = NavHostFragment.findNavController(this);
         observeStudents();
         setupViews();

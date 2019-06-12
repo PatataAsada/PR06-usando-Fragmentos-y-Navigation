@@ -7,5 +7,6 @@ import es.iessaladillo.yeraymoreno.pr06_new.data.model.Joke;
 
 
 public interface RepositoryJoke {
-    LiveData<Resource<Joke>> queryJoke(String tag);
+    LiveData<Resource<Joke>> queryJoke();
+
 }

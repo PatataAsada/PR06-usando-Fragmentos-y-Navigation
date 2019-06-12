@@ -14,22 +14,24 @@ public class RepositoryJokeImpl implements RepositoryJoke{
 
     private ApiService apiservice;
 
-    public static RepositoryJokeImpl getInstance() {
+    public static RepositoryJokeImpl getInstance(ApiService apiservice) {
         if (instance == null) {
             synchronized (RepositoryJokeImpl.class) {
                 if (instance == null) {
-                    instance = new RepositoryJokeImpl();
+                    instance = new RepositoryJokeImpl(apiservice);
                 }
             }
         }
         return instance;
     }
 
-    public RepositoryJokeImpl(){}
+    public RepositoryJokeImpl(ApiService apiservice){
+        this.apiservice = apiservice;
+    }
 
     @Override
-    public LiveData<Resource<Joke>> queryJoke(String tag) {
-        return Transformations.map(apiservice.getJoke(tag), resource -> {
+    public LiveData<Resource<Joke>> queryJoke() {
+        return Transformations.map(apiservice.getJoke(), resource -> {
             if (resource.isLoading()) {
                 return Resource.loading();
             } else if (resource.hasError()) {

@@ -45,7 +45,10 @@ dependencies {
     implementation "androidx.room:room-guava:2.1.0-rc01"
     testImplementation "androidx.room:room-testing:2.1.0-rc01"
     implementation "androidx.preference:preference:1.1.0-alpha05"
-    implementation 'com.squareup.retrofit2:retrofit:2.0.0'
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    debugImplementation 'com.ashokvarma.android:gander:1.4.0'
+    releaseImplementation 'com.ashokvarma.android:gander-no-op:1.4.0'
 }
