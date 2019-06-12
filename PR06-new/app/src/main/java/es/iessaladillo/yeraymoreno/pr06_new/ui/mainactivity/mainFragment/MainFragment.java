@@ -1,6 +1,5 @@
 package es.iessaladillo.yeraymoreno.pr06_new.ui.mainactivity.mainFragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;

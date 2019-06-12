@@ -12,7 +12,7 @@ public class RepositoryJokeImpl implements RepositoryJoke{
 
     private static RepositoryJokeImpl instance;
 
-    private ApiService apiservice;
+    private final ApiService apiservice;
 
     public static RepositoryJokeImpl getInstance(ApiService apiservice) {
         if (instance == null) {

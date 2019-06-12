@@ -16,6 +16,7 @@ import es.iessaladillo.yeraymoreno.pr06_new.R;
 
 public class PreferenceFragment extends Fragment {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private PreferenceViewModel mViewModel;
 
     public static PreferenceFragment newInstance() {

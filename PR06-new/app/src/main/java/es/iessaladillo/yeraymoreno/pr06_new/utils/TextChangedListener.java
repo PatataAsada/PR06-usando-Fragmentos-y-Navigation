@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TextChangedListener {
-    static String invalid_data = "Invalid data";
+    static final String invalid_data = "Invalid data";
     private TextChangedListener(){
 
     }

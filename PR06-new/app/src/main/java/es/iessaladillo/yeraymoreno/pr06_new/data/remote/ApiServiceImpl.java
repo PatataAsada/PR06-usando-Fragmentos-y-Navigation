@@ -5,26 +5,23 @@ import androidx.lifecycle.MutableLiveData;
 
 import es.iessaladillo.yeraymoreno.pr06_new.base.Resource;
 import es.iessaladillo.yeraymoreno.pr06_new.data.remote.dto.JokeDto;
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.GET;
 
 public class ApiServiceImpl implements ApiService {
     private static ApiServiceImpl instance;
-    private final OkHttpClient okHttpClient;
     private final Api api;
 
-    private ApiServiceImpl(Api api, OkHttpClient okHttpClient) {
+    private ApiServiceImpl(Api api) {
         this.api = api;
-        this.okHttpClient = okHttpClient;
     }
 
-    public static synchronized ApiServiceImpl getInstance(Api api, OkHttpClient okHttpClient) {
+    public static synchronized ApiServiceImpl getInstance(Api api) {
         if (instance == null) {
             synchronized (ApiServiceImpl.class) {
                 if (instance == null) {
-                    instance = new ApiServiceImpl(api, okHttpClient);
+                    instance = new ApiServiceImpl(api);
                 }
             }
         }

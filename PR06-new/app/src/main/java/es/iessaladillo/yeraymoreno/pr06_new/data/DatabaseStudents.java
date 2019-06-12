@@ -9,8 +9,8 @@ import es.iessaladillo.yeraymoreno.pr06_new.data.model.Student;
 
 public class DatabaseStudents {
     private static DatabaseStudents instance;
-    private ArrayList<Student> students = new ArrayList<>();
-    private MutableLiveData<List<Student>> studentsLiveData = new MutableLiveData<>();
+    private final ArrayList<Student> students = new ArrayList<>();
+    private final MutableLiveData<List<Student>> studentsLiveData = new MutableLiveData<>();
 
 
     public DatabaseStudents() {

@@ -34,7 +34,7 @@ public abstract class AppDatabaseStudents extends RoomDatabase {
         }
         return instance;
     }
-    public static void insertInitialData() {
+    private static void insertInitialData() {
         AsyncTask.THREAD_POOL_EXECUTOR.execute(()->instance.studentDao()
                 .insert(new Student(1,"Baldo","baldo@hotmail.com",12345,"su casa","www.baldo.com")));
     }

@@ -53,6 +53,7 @@ public class RetrofitFragment extends Fragment {
         fragmentRetrofitBinding.btnJoke.setOnClickListener(v -> retrofitViewModel.refreshJoke());
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void observeJoke() {
         retrofitViewModel.getLoading().observe(getViewLifecycleOwner(),
                 loading -> fragmentRetrofitBinding.pbLoad.setVisibility(retrofitViewModel.getLoading().getValue() ? View.VISIBLE : View.INVISIBLE));

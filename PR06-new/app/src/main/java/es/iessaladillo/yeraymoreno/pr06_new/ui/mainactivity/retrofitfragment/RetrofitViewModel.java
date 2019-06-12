@@ -13,7 +13,7 @@ import es.iessaladillo.yeraymoreno.pr06_new.data.model.Joke;
 
 public class RetrofitViewModel extends ViewModel {
 
-    public RepositoryJoke repository;
+    public final RepositoryJoke repository;
 
     private final MutableLiveData<Boolean> queryTrigger = new MutableLiveData<>();
     private final LiveData<Boolean> loading;
@@ -24,9 +24,7 @@ public class RetrofitViewModel extends ViewModel {
     public RetrofitViewModel(RepositoryJoke repository){
         this.repository = repository;
         LiveData<Resource<Joke>> queryLiveData = Transformations.switchMap(queryTrigger,
-                query -> {
-                    return repository.queryJoke();
-                });
+                query -> repository.queryJoke());
         loading = Transformations.map(queryLiveData, Resource::isLoading);
         message.addSource(queryLiveData, resource -> {
             if (resource.hasError()) {

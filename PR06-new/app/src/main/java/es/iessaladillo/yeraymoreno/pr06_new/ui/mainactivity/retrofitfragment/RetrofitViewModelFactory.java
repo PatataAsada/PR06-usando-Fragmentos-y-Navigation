@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import es.iessaladillo.yeraymoreno.pr06_new.data.RepositoryJoke;
 
+@SuppressWarnings("unchecked")
 public class RetrofitViewModelFactory implements ViewModelProvider.Factory {
 
     private final RepositoryJoke repository;

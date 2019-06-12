@@ -1,11 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">DemoRecyclerView</string>
     <string name="main_no_students_yet">no hay estudiantes</string>
     <string name="CardViewBtnEdit">Edit</string>
     <string name="btnDelete">Delete</string>
-    <string name="avatar_label">Select Avatar</string>
-    <string name="main_invalid_data">Invalid data</string>
-    <string name="main_save">Save</string>
+    <string name="avatar_label" tools:keep="@string/avatar_label">Select Avatar</string>
+    <string name="main_invalid_data" tools:keep="@string/main_invalid_data">Invalid data</string>
+    <string name="main_save" tools:keep="@string/main_save">Save</string>
     <string name="main_saved_succesfully">Student saved successfully</string>
     <string name="main_error_saving">Error saving student</string>
     <string name="avatar_select">Select</string>
@@ -24,23 +24,23 @@
     <string name="lblWeb_txt">Web</string>
     <string name="txtWeb_h">(web)</string>
     <string name="imgWeb_desc">Web icon</string>
-    <string name="avatar_desc">avatar icon</string>
+    <string name="avatar_desc" tools:keep="@string/avatar_desc">avatar icon</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="fragment_avatar_select">Select an avatar</string>
-    <string name="fragment_student_toolbar">Student Form</string>
-    <string name="fragment_main_toolbar">ReciclerView</string>
+    <string name="fragment_student_toolbar" tools:keep="@string/fragment_student_toolbar">Student Form</string>
+    <string name="fragment_main_toolbar" tools:keep="@string/fragment_main_toolbar">ReciclerView</string>
     <string name="mnu_settings">Preferencias</string>
     <string name="mnu_list">Lista</string>
-    <string name="app_real_name">Repasos para aprobar una asignatura</string>
-    <string name="menu">menu</string>
-    <string name="title_activity_main_with_drawer">MainActivityWithDrawer</string>
+    <string name="app_real_name" tools:keep="@string/app_real_name">Repasos para aprobar una asignatura</string>
+    <string name="menu" tools:keep="@string/menu">menu</string>
+    <string name="title_activity_main_with_drawer" tools:keep="@string/title_activity_main_with_drawer">MainActivityWithDrawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="nav_header_title" tools:keep="@string/nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle" tools:keep="@string/nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc" tools:keep="@string/nav_header_desc">Navigation header</string>
+    <string name="action_settings" tools:keep="@string/action_settings">Settings</string>
     <string name="navheader_title">Pues este es el navdrawer</string>
     <string name="mnu_thread1">multihilos 1</string>
     <string name="btnJoke_txt">chiste</string>

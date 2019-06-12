@@ -5,6 +5,7 @@ import androidx.room.Insert;
 import androidx.room.Update;
 
 //Caso base, sirve para cualquier tabla en room si la implementas.
+@SuppressWarnings("unchecked")
 public interface BaseDao<M> {
     @Insert
     long insert(M model);

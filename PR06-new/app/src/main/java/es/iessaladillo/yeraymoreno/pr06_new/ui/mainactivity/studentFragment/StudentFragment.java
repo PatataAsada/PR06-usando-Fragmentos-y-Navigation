@@ -68,7 +68,7 @@ public class StudentFragment extends Fragment {
 
     //Sets the toolbar.
     private void setupToolbar(View view) {
-        ActionBar toolbar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        ActionBar toolbar = ((AppCompatActivity) Objects.requireNonNull(getActivity())).getSupportActionBar();
     }
 
 
