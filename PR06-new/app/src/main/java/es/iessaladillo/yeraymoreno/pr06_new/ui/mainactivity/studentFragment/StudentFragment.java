@@ -248,7 +248,6 @@ public class StudentFragment extends Fragment {
 
     //Sends the student to database.
     private void sendStudentToDataBase() {
-        setStudent();
         if (studentViewModel.isEdit) {
             mainFragmentViewModel.editStudent(studentViewModel.getOldStudent(), studentViewModel.getStudent());
         } else {
