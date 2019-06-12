@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.ViewCompat;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
@@ -68,16 +68,7 @@ public class StudentFragment extends Fragment {
 
     //Sets the toolbar.
     private void setupToolbar(View view) {
-        Toolbar toolbar = ViewCompat.requireViewById(view, R.id.toolbar);
-        toolbar.setTitle(R.string.fragment_student_toolbar);
-        toolbar.inflateMenu(R.menu.fragment_student);
-        toolbar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.mnuSave) {
-                save();
-                return true;
-            }
-            else return StudentFragment.super.onOptionsItemSelected(item);
-        });
+        ActionBar toolbar = ((AppCompatActivity) getActivity()).getSupportActionBar();
     }
 
 
