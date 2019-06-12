@@ -39,9 +39,14 @@ public class RetrofitFragment extends Fragment {
                 Injector.provideMainFragmentViewModelFactory(requireContext())).get(
                 RetrofitViewModel.class);
 
+        setupLoading();
         observeJoke();
         setupButton();
 
+    }
+
+    private void setupLoading() {
+        fragmentRetrofitBinding.pbLoad.setIndeterminate(true);
     }
 
     private void setupButton() {
@@ -49,8 +54,8 @@ public class RetrofitFragment extends Fragment {
     }
 
     private void observeJoke() {
-        //retrofitViewModel.getLoading().observe(getViewLifecycleOwner(),
-        //        loading -> fragmentRetrofitBinding.lblJoke.setText("Cargando"));
+        retrofitViewModel.getLoading().observe(getViewLifecycleOwner(),
+                loading -> fragmentRetrofitBinding.pbLoad.setVisibility(retrofitViewModel.getLoading().getValue() ? View.VISIBLE : View.INVISIBLE));
         retrofitViewModel.getMessage().observe(getViewLifecycleOwner(),
                 new EventObserver<>(this::showErrorLoadingJoke));
         retrofitViewModel.getJoke().observe(getViewLifecycleOwner(), this::showJoke);
